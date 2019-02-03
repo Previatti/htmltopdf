@@ -49,6 +49,12 @@ namespace API.Controllers
         public Stream PdfGenerator()
         {
             var Renderer = new HtmlToPdf();
+            Renderer.PrintOptions.MarginBottom = 5;
+            Renderer.PrintOptions.MarginLeft = 5;
+            Renderer.PrintOptions.MarginRight = 5;
+            Renderer.PrintOptions.MarginTop = 5;
+            Renderer.PrintOptions.PaperSize = PdfPrintOptions.PdfPaperSize.A4;
+
             var htmlString = GetEmailTemplate("https://www1.folha.uol.com.br/ultimas-noticias/");
             var PDF = Renderer.RenderHtmlAsPdf(htmlString);
             return PDF.Stream;

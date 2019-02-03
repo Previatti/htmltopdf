@@ -34,6 +34,12 @@ namespace WEB.Controllers
         {
             var Renderer = new HtmlToPdf();
             var htmlString = GetEmailTemplate("https://www1.folha.uol.com.br/ultimas-noticias/");
+            Renderer.PrintOptions.PaperSize = PdfPrintOptions.PdfPaperSize.A4;
+            Renderer.PrintOptions.MarginBottom = 5;
+            Renderer.PrintOptions.MarginLeft = 5;
+            Renderer.PrintOptions.MarginRight = 5;
+            Renderer.PrintOptions.MarginTop = 5;
+            
             var PDF = Renderer.RenderHtmlAsPdf(htmlString);
             return PDF.Stream;
         }
